@@ -14,9 +14,11 @@ public class MongoController {
 
 
 @GetMapping("/api/test")
-    public void testMong(){
+    public String testMong(){
 
         this.mongService.textCreate();
+
+        return "테스트데이터 삽입 성공!";
     }
 
 }
