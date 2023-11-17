@@ -23,15 +23,15 @@ public class Mong3Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Mongo customer1 = new Mongo("text1","text2");
-		Mongo customer2 = new Mongo( "textTest1","textTest2");
-
-		// insert
-		mongoRepo.insert(Arrays.asList(customer1, customer2));
-
-		// get
-		List<Mongo> result = this.mongoRepo.findByText1("s1");
-		System.out.println(result);
+//		Mongo customer1 = new Mongo("text1","text2");
+//		Mongo customer2 = new Mongo( "textTest1","textTest2");
+//
+//		// insert
+//		mongoRepo.insert(Arrays.asList(customer1, customer2));
+//
+//		// get
+//		List<Mongo> result = this.mongoRepo.findByText1("s1");
+//		System.out.println(result);
 	}
 
 

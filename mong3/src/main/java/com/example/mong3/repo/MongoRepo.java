@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface MongoRepo extends MongoRepository<Mongo , String> {
-    public List<Mongo> findByText1(String Text1);
+//
 
 
-    public Page<Mongo>findAll(Pageable pageable);
 }

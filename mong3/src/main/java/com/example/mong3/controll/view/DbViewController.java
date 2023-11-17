@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class DbViewController {
@@ -18,11 +20,5 @@ public class DbViewController {
     private  final  MongoController mongoController;
     private final MongService mongService;
 
-    @GetMapping("/view")
-    public String DBView(Model model, @RequestParam(value = "page",defaultValue = "0")int page){
-
-        Page<Mongo> mongo = this.mongService.getList(page);
-        model.addAttribute("mongos",mongo);
-        return "Db_View";
-    }
+//
 }

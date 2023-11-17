@@ -1,13 +1,13 @@
 package com.example.mong3.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@Getter
+@Setter
 @Document("1234")
 public class Mongo {
 
@@ -16,6 +16,7 @@ public class Mongo {
 
     private String text1;
     private String text2;
+
 
 
     public Mongo(String text1, String text2) {

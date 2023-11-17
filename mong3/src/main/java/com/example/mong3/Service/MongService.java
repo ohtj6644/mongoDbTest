@@ -28,13 +28,8 @@ public class MongService {
         }
     }
 
-    public Page<Mongo> getList(int page){
-        List<Sort.Order> sorts= new ArrayList<>();
-        sorts.add(Sort.Order.desc("id"));
-        Pageable pageable = PageRequest.of(page,20,Sort.by(sorts));
-        return this.mongoRepo.findAll(pageable);
+
+    public List<Mongo> getList() {
+        return mongoRepo.findAll();
     }
-
-
-
 }

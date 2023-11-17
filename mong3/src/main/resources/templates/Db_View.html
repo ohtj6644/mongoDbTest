@@ -7,5 +7,12 @@
 <body>
 
 <div>DB View Page</div>
+<table>
+    <tr th:each="data, loop : ${mongo}">
+        <td class="number" th:text="${data.id}">번호</td>
+        <td class="text1" th:text="${data.text1}">Text1</td>
+        <td class="text2" th:text="${data.text2}">Text2</td>
+    </tr>
+</table>
 </body>
 </html>
