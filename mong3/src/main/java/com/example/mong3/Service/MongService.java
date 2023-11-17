@@ -18,9 +18,7 @@ public class MongService {
 
         for(int i=0; i<10 ; i++){
 
-            Mongo mongo = new Mongo();
-            mongo.setId("i");
-            mongo.setText(i+"번째 테스트 데이터");
+            Mongo mongo = new Mongo(i+"",i+"번째 테스트 데이터",i+"-2 번째 테스트 데이터");
             this.mongoRepo.insert(mongo);
         }
     }

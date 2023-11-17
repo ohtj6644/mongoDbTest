@@ -9,13 +9,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document("1234")
-@NoArgsConstructor
-@AllArgsConstructor
 public class Mongo {
 
     @Id
     private String id;
 
-    private String text;
+    private String text1;
+    private String text2;
 
+
+    public Mongo(String text1, String text2) {
+        this.text1 = text1;
+        this.text2 = text2;
+    }
+
+    public Mongo(String id, String text1, String text2){
+        this.text1=text1;
+        this.text2=text2;
+        this.id=id;
+
+    }
 }
