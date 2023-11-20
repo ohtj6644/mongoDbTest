@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface MongoRepo extends MongoRepository<Mongo , String> {
 //
-
-
 }

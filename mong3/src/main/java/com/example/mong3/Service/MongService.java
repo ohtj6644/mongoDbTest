@@ -3,7 +3,9 @@ package com.example.mong3.Service;
 
 import com.example.mong3.entity.Mongo;
 import com.example.mong3.repo.MongoRepo;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +22,7 @@ public class MongService {
     private final MongoRepo mongoRepo;
 
 
+
     public  void  textCreate(){
         for(int i=0; i<10 ; i++){
 
@@ -30,6 +33,24 @@ public class MongService {
 
 
     public List<Mongo> getList() {
-        return mongoRepo.findAll();
+        try {
+            return mongoRepo.findAll();
+        } catch (Exception e) {
+            e.printStackTrace(); // 또는 로깅을 사용하여 예외 내용을 출력
+            throw new RuntimeException("데이터를 가져오는 중에 오류가 발생했습니다.");
+        }
+
+
+    }
+
+    public  Mongo getId(String id){
+
+        try{
+            return this.mongoRepo.findById(id).get();
+        } catch (Exception e){
+            e.printStackTrace();;
+            throw new RuntimeException("가져오기 실패",e);
+        }
+
     }
 }

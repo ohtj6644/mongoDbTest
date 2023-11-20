@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @Document("1234")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Mongo {
 
     @Id
@@ -18,16 +20,4 @@ public class Mongo {
     private String text2;
 
 
-
-    public Mongo(String text1, String text2) {
-        this.text1 = text1;
-        this.text2 = text2;
-    }
-
-    public Mongo(String id, String text1, String text2){
-        this.text1=text1;
-        this.text2=text2;
-        this.id=id;
-
-    }
 }
