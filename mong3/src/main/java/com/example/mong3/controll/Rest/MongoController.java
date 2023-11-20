@@ -1,4 +1,4 @@
-package com.example.mong3.controll;
+package com.example.mong3.controll.Rest;
 
 
 import com.example.mong3.Service.MongService;
@@ -6,10 +6,7 @@ import com.example.mong3.entity.Mongo;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,4 +34,26 @@ public class MongoController {
     public String readMongo(@PathVariable String id ){
         return this.mongService.getId(id).getText1();
     }
+
+    @GetMapping("/update/{id}")
+    public Mongo update(@PathVariable String id , @RequestParam(value = "text1")String text1 ,@RequestParam(value = "text2")String text2  ){
+        Mongo mongo = this.mongService.getId(id);
+        Mongo updateMongo=this.mongService.update(mongo,text1,text2);
+        return updateMongo;
+    }
+
+
+    @DeleteMapping("/{id}/delete")
+    public void Delete(@PathVariable String id){
+        this.mongService.delete(id);
+
+    }
+
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable String id){
+        this.mongService.delete(id);
+        return id+"번이 삭제되었습니다";
+    }
+
+
 }

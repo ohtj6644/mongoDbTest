@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,5 +53,17 @@ public class MongService {
             throw new RuntimeException("가져오기 실패",e);
         }
 
+    }
+
+
+    public Mongo update(Mongo mongo , String text1 , String text2){
+        mongo.setText1(text1);
+        mongo.setText2(text2);
+        this.mongoRepo.save(mongo);
+        return mongo;
+    }
+
+    public void delete(String id){
+        this.mongoRepo.delete(this.mongoRepo.findById(id).get());
     }
 }
