@@ -6,25 +6,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
 @Data
 @Getter
 @Setter
-@Document("1234")
+@Document("1234_adress")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Mongo {
+public class MongoAdress {
 
     @Id
     private String id;
 
-    private String text1;
-    private String text2;
+    @DBRef
+    private Mongo mongo;
 
-    @DBRef(lazy = true)
-    private List<MongoAdress> adressList;
-
-
-
+    private String adress;
 }

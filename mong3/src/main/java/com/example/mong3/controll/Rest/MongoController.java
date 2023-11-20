@@ -42,14 +42,14 @@ public class MongoController {
         return updateMongo;
     }
 
-
+    //delete 맵핑은 http 요청이 DELETE 방식으로 왔을 경우에만 실행됨.
     @DeleteMapping("/{id}/delete")
     public void Delete(@PathVariable String id){
         this.mongService.delete(id);
 
     }
 
-    @GetMapping("/{id}/delete")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable String id){
         this.mongService.delete(id);
         return id+"번이 삭제되었습니다";

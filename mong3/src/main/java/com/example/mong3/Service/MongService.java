@@ -27,7 +27,12 @@ public class MongService {
     public  void  textCreate(){
         for(int i=0; i<10 ; i++){
 
-            Mongo mongo = new Mongo(i+"",i+"번째 테스트 데이터",i+"-2 번째 테스트 데이터");
+            Mongo mongo = new Mongo();
+            mongo.setId(Integer.toString(i));
+            mongo.setText1(i+"번째 테스트 데이터");
+            mongo.setText2(i+"-2번째 테스트 데이터");
+
+
             this.mongoRepo.insert(mongo);
         }
     }
