@@ -6,6 +6,8 @@ import com.example.mong3.repo.AdressRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class AdressService {
@@ -17,9 +19,15 @@ public class AdressService {
     public MongoAdress createAdress(Mongo mongo, String adress){
         MongoAdress mongoAdress = new MongoAdress();
 
-        mongoAdress.setId(Integer.toString(Integer.parseInt(this.adressRepo.findTopByOrderByIdDesc().getId())+1));
+        if(this.adressRepo.findTopByOrderByInsertDateDesc()==null){
+            mongoAdress.setId("000000");
+        }else {
+            mongoAdress.setId(String.format("%06d",Integer.parseInt(this.adressRepo.findTopByOrderByInsertDateDesc().getId())+1));
+        }
+
         mongoAdress.setMongo(mongo);
         mongoAdress.setAdress(adress);
+        mongoAdress.setInsertDate(LocalDateTime.now());
         this.adressRepo.insert(mongoAdress);
 
         return mongoAdress;

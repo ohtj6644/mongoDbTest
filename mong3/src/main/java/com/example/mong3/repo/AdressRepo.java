@@ -11,4 +11,6 @@ public interface AdressRepo extends MongoRepository<MongoAdress , String> {
 
 
     MongoAdress findTopByOrderByIdDesc();
+
+    MongoAdress findTopByOrderByInsertDateDesc();
 }
