@@ -30,4 +30,12 @@ public class AdressController {
         return id+"번 adress 가 삭제되었습니다 ";
     }
 
+    @PostMapping("/adress/update/{id}")
+    public String adressUpdate(@PathVariable String id , @RequestParam(value = "newAdress")String adress){
+        String lastAdress = this.adressService.getAdress(id);
+        MongoAdress mongoAdress=this.adressService.updateAdress(id,adress);
+
+        return id+"번  이전 adress: "+lastAdress+"+가 "+ mongoAdress.getAdress()+" 로 수정되었습니다";
+    }
+
 }

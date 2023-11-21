@@ -38,4 +38,20 @@ public class AdressService {
 
         this.adressRepo.deleteById(id);
     }
+
+
+
+    public  MongoAdress updateAdress(String id,String adress){
+        MongoAdress mongoAdress = this.adressRepo.findById(id).get();
+        mongoAdress.setAdress(adress);
+        this.adressRepo.save(mongoAdress);
+        return mongoAdress;
+
+    }
+
+    public  String getAdress(String id){
+
+        return this.adressRepo.findById(id).get().getAdress();
+    }
+
 }
